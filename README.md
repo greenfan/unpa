@@ -5,6 +5,22 @@
 
 UNPA NetHound: single-file real-time terminal network analyzer. Run as root/sudo for privileged capture; run unprivileged and it automatically falls back to the psutil-based analyzer. Pure Python stdlib, with psutil only for the unprivileged path. Linux raw sockets (post-softIRQ). macOS tcpdump fallback.
 
+## Two editions
+
+| | Python (`unpa.py`) | eBPF (`ebpf/`, branch `unpa_0.6.2.1_ebpf`) |
+|---|---|---|
+| Capture | Raw sockets, psutil fallback | Passive TC/eBPF in the kernel |
+| Scope | One host view, per-process, DNS | Every interface in every network namespace |
+| Best for | Desktops, firewalls, quick looks | Hypervisor hosts, long runs, flow history |
+| Needs | Python 3 | Root, clang, libbpf |
+
+The eBPF edition keeps all flows for the whole run and can log them to a file. See [docs/EBPF.md](docs/EBPF.md).
+
+```bash
+sudo apt install clang libbpf-dev pkg-config && make
+sudo build/unpa -a --log ~/unpa-history.log
+```
+
 ## Installation
 
 ### pip
