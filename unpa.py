@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """UNPA NetHound - privileged and unprivileged network traffic analyzer.
 
-Version: 1.3
+Version: 0.6.2.1
 """
 import socket
 import struct
@@ -34,7 +34,7 @@ except ImportError:
 IS_MACOS = platform.system() == 'Darwin'
 IS_LINUX = platform.system() == 'Linux'
 ANSI_ESCAPE_RE = re.compile(r'\x1b\[[0-9;]*m')
-APP_VERSION = "1.3"
+APP_VERSION = "0.6.2.1"
 
 def parse_ip_or_cidr(value):
     try:
